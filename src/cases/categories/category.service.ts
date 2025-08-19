@@ -15,13 +15,21 @@ export class CategoryService {
         return this.repository.find();
     }
 
-    findById(id: string): Promise<Category> {
-        const found = this.repository.findOneByOrFail({ id: id });
-        if (!found) throw new HttpException('Categoria não encontrado', HttpStatus.NOT_FOUND)
-        return found
+    async findById(id: string): Promise<Category> {
+        const found = await this.repository.findOneBy({ id });
+        if (!found) throw new HttpException('Categoria não encontrada', HttpStatus.NOT_FOUND); 
+        else return found
     }
 
     save(category: Category): Promise<Category> {
+        return this.repository.save(category)
+    }
+
+    async update(id: string, category: Category): Promise<Category> {
+        await this.findById(id)
+        
+        category.id = id
+
         return this.repository.save(category)
     }
 
