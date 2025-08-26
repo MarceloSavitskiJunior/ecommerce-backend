@@ -12,7 +12,9 @@ export class ProductService {
     ) { }
 
     findAll(): Promise<Product[]> {
-        return this.repository.find({relations: ["category"]});
+        return this.repository.find({
+            relations: ["category", "brand"]
+        });
     }
 
     async findById(id: string): Promise<Product> {
