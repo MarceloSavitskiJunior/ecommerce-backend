@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoryModule } from './cases/categories/category.module';
 import { ProductModule } from './cases/products/product.module';
 import { BrandModule } from './cases/brands/brand.module';
+import { StateModule } from './cases/cities/modules/city.module';
+import { CustomerModule } from './cases/customer/modules/customer.module';
 
 @Module({
   imports: [
@@ -19,10 +21,13 @@ import { BrandModule } from './cases/brands/brand.module';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: true,
+      logging: false
     }),
     CategoryModule,
     ProductModule,
-    BrandModule
+    BrandModule,
+    StateModule,
+    CustomerModule
   ],
 })
 export class AppModule {}
