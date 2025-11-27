@@ -5,18 +5,21 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "t
 export class Customer {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id?: string;
+
+    @Column({ nullable: false })
+    supabaseId: string;
 
     @Column({ length: 60, nullable: false })
-    name: string;
+    name?: string;
 
     @Column({ length: 250, nullable: true })
-    address: string
+    address?: string
 
     @Column({ length: 8, nullable: true})
-    zipCode: string
+    zipCode?: string
 
-    @ManyToOne(() => City, (city) => city.id, { eager: true, nullable: false })
+    @ManyToOne(() => City, (city) => city.id, { eager: true, nullable: true })
     @JoinColumn({ name: 'cityId' })
-    city: City
+    city?: City
 }

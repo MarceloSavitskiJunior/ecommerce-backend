@@ -6,6 +6,8 @@ import { ProductModule } from './cases/products/product.module';
 import { BrandModule } from './cases/brands/brand.module';
 import { StateModule } from './cases/cities/modules/city.module';
 import { CustomerModule } from './cases/customer/modules/customer.module';
+import { SupabaseModule } from './lib/supabase/supabase.module';
+import { AuthModule } from './cases/auth/module/auth.module';
 
 @Module({
   imports: [
@@ -27,7 +29,9 @@ import { CustomerModule } from './cases/customer/modules/customer.module';
     ProductModule,
     BrandModule,
     StateModule,
-    CustomerModule
+    CustomerModule,
+    AuthModule,
+    SupabaseModule
   ],
 })
 export class AppModule {}

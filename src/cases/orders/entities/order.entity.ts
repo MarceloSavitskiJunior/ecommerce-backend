@@ -3,7 +3,7 @@ import { Customer } from "src/cases/customer/entities/customer.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
 import { OrderItem } from "./order-item.entity";
 
-enum OrderStatus {
+export enum OrderStatus {
     NEW = 'NEW',
     SEPARATION = 'SEPARATION',
     INVOICED = 'INVOICED',
@@ -20,7 +20,7 @@ export class Order {
 
     @ManyToOne(() => Customer, (customer) => customer.id, { eager: true, nullable: false })
     @JoinColumn({ name: 'customerId' })
-    customerId: Customer;
+    customer: Customer;
 
     @Column({ 
         type: 'decimal', 

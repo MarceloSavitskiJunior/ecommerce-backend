@@ -36,4 +36,9 @@ export class CustomerService {
     delete(id: string): Promise<DeleteResult> {
         return this.repository.delete(id)
     }
+
+    async findBySupabaseId(supabaseId: string) {
+        return this.repository.findOne({ where: { supabaseId } });
+    }
+
 }
