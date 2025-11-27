@@ -1,8 +1,8 @@
 import { DeleteResult, Repository } from "typeorm";
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Product } from "./product.entity";
-import { CategoryService } from "../categories/category.service";
+import { CategoryService } from "../../categories/category.service";
+import { Product } from "../entities/product.entity";
 
 @Injectable()
 export class ProductService {

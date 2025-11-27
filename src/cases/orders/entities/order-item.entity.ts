@@ -1,8 +1,6 @@
-import { City } from "src/cases/cities/entities/city.entity";
-import { Customer } from "src/cases/customer/entities/customer.entity";
-import { Product } from "src/cases/products/product.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
 import { Order } from "./order.entity";
+import { Product } from "src/cases/products/entities/product.entity";
 
 enum OrderStatus {
     NEW = 'NEW',
@@ -19,8 +17,8 @@ export class OrderItem {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @ManyToOne(() => Order, (order) => order.id, { eager: true, nullable: false })
-    @JoinColumn({ name: 'orderId' })
+    @ManyToOne(() => Order, (order) => order.itens, { onDelete: "CASCADE" })
+    @JoinColumn({ name: "orderId" })
     order: Order;
 
     @ManyToOne(() => Product, (product) => product.id, { eager: true, nullable: false })

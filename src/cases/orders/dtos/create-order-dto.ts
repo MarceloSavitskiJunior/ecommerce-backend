@@ -1,6 +1,6 @@
 export class CreateOrderDto {
-  supabaseId: string;
-  items: {
+  customerId: string;
+  itens: {
     productId: string;
     quantity: number;
   }[];

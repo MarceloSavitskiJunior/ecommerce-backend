@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Category } from "../categories/category.entity";
-import { Brand } from "../brands/brand.entity";
+import { Brand } from "src/cases/brands/brand.entity";
+import { Category } from "src/cases/categories/category.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ProductPhoto } from "./product-photo.entity";
 
 @Entity('product')
 export class Product {
@@ -35,4 +36,7 @@ export class Product {
     @OneToOne(() => Brand, (brand) => brand.id, { nullable: true })
     @JoinColumn({ name: 'brandId' })
     brand: Brand
+
+    @OneToMany(() => ProductPhoto, (photo) => photo.product, { eager: true, cascade: true })
+    photos?: ProductPhoto[];
 }
