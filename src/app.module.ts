@@ -9,6 +9,8 @@ import { CustomerModule } from './cases/customer/modules/customer.module';
 import { SupabaseModule } from './lib/supabase/supabase.module';
 import { AuthModule } from './cases/auth/module/auth.module';
 import { OrderModule } from './cases/orders/modules/order.module';
+import { FavoriteModule } from './cases/favorites/module/favorite.module';
+import { RatingModule } from './cases/ratings/module/rating.module';
 
 @Module({
   imports: [
@@ -33,7 +35,9 @@ import { OrderModule } from './cases/orders/modules/order.module';
     CustomerModule,
     OrderModule,
     AuthModule,
-    SupabaseModule
+    SupabaseModule,
+    FavoriteModule,
+    RatingModule
   ],
 })
 export class AppModule {}

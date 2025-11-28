@@ -33,7 +33,7 @@ export class Product {
     @JoinColumn({ name: 'categoryId' })
     category: Category
 
-    @OneToOne(() => Brand, (brand) => brand.id, { nullable: true })
+    @ManyToOne(() => Brand, (brand) => brand.id, { nullable: true })
     @JoinColumn({ name: 'brandId' })
     brand: Brand
 
